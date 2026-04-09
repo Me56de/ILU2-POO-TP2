@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import personnages.Chef;
+import personnages.Gaulois;
 import villagegaulois.Village;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -25,22 +26,26 @@ class ControlAfficherVillageTest {
 	@Test
 	void testControlAfficherVillage() {
 		 ControlAfficherVillage controlAfficherVillage = new ControlAfficherVillage(village);
-		 assertNotNull(controlAfficherVillage, "Constructeur ne renvoie pas null");
+		 assertNotNull(controlAfficherVillage);
 	}
 
 	@Test
 	void testDonnerNomsVillageois() {
-		fail("Not yet implemented");
+		ControlAfficherVillage controlAfficherVillage = new ControlAfficherVillage(village);
+		Gaulois bonemine = new Gaulois("Bonemine",3);
+		village.ajouterHabitant(bonemine);
+		assertArrayEquals(controlAfficherVillage.donnerNomsVillageois() , new String[] {"Abraracourcix" , "Bonemine"});
 	}
 
 	@Test
 	void testDonnerNomVillage() {
-		fail("Not yet implemented");
-	}
+		ControlAfficherVillage controlAfficherVillage = new ControlAfficherVillage(village);
+		assertEquals(controlAfficherVillage.donnerNomVillage() , "Le village des irréductibles");	}
 
 	@Test
 	void testDonnerNbEtals() {
-		fail("Not yet implemented");
+		ControlAfficherVillage controlAfficherVillage = new ControlAfficherVillage(village);
+		assertEquals(controlAfficherVillage.donnerNbEtals(), 5);
 	}
-
 }
+	
