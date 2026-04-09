@@ -9,16 +9,8 @@ public class ControlLibererEtal {
 		this.controlTrouverEtalVendeur = controlTrouverEtalVendeur;
 	}
 
-	// TODO a completer
-	public Etal isVendeur(String nomVendeur) {
-		Etal vendeurReconnu;
-		vendeurReconnu = controlTrouverEtalVendeur.trouverEtalVendeur(nomVendeur);
-		if (vendeurReconnu != null) {
-			return vendeurReconnu;
-		} else {
-			return null;
-		}
-
+	public boolean isVendeur(String nomVendeur) {
+		return controlTrouverEtalVendeur.trouverEtalVendeur(nomVendeur) != null;
 	}
 
 	/**
@@ -32,13 +24,14 @@ public class ControlLibererEtal {
 	 *         
 	 */
 	public String[] libererEtal(String nomVendeur) {
-
-		String[] donneesEtal = null;
-
-		if (controlTrouverEtalVendeur != null) {
-			donneesEtal[1] += nomVendeur;
+		Etal etal = controlTrouverEtalVendeur.trouverEtalVendeur(nomVendeur);
+		if (etal!=null)
+		{
+			String[] donneesEtal = etal.etatEtal();
+			etal.libererEtal();
+			return donneesEtal;
 		}
-		return donneesEtal;
+		return null;
 	}
 
 }
